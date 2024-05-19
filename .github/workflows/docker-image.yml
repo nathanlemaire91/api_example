@@ -7,12 +7,12 @@ on:
     branches: [ "main" ]
 
 jobs:
-
-  build:
-
+  build_and_publish:
     runs-on: python:3.11
-
     steps:
     - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+    - name: Login, build and push the Docker image
+      run: |
+        docker login --username nathanlemaire91 --password ${{ secrets.DOCKER_HUB_TOKEN }}
+        docker build . --file Dockerfile --tag ghcr.io/nathanlemaire91/heart_diseas_prediction:latest,
+        docker push ghcr.io/nathanlemaire91/heart_disease_prediction:latest
