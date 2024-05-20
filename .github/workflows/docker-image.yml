@@ -17,5 +17,5 @@ jobs:
     - name: Login, build and push the Docker image
       run: |
         echo ${{ secrets.DOCKER_HUB_TOKEN }} | docker login --username nathanlemaire91 --password-stdin ghcr.io
-        docker build . --file Dockerfile --tag ghcr.io/nathanlemaire91/heart_diseas_prediction:latest,
+        docker build . --file Dockerfile --tag ghcr.io/nathanlemaire91/heart_diseas_prediction:latest
         docker push ghcr.io/nathanlemaire91/heart_disease_prediction:latest
